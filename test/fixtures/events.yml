@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  subcategory_id: 1
+  name: MyString
+  starts_at: 2012-03-06 11:59:57
+  ends_at: 2012-03-06 11:59:57
+  location: MyString
+  vote_interval: 1
+
+two:
+  subcategory_id: 1
+  name: MyString
+  starts_at: 2012-03-06 11:59:57
+  ends_at: 2012-03-06 11:59:57
+  location: MyString
+  vote_interval: 1

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Subcategory:</b>
+  <%= @event.subcategory_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @event.name %>
+</p>
+
+<p>
+  <b>Starts at:</b>
+  <%= @event.starts_at %>
+</p>
+
+<p>
+  <b>Ends at:</b>
+  <%= @event.ends_at %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @event.location %>
+</p>
+
+<p>
+  <b>Vote interval:</b>
+  <%= @event.vote_interval %>
+</p>
+
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
