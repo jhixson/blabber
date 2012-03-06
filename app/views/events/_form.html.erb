@@ -13,7 +13,8 @@
 
   <div class="field">
     <%= f.label :subcategory_id %><br />
-    <%= f.number_field :subcategory_id %>
+    <% options = options_from_collection_for_select(Subcategory.all(:order => :name), :id, :name, @event.subcategory_id) %>
+    <%= select_tag :subcategory_id, options, { :prompt => 'Select a subcategory' } %>
   </div>
   <div class="field">
     <%= f.label :name %><br />
