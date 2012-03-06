@@ -1,4 +1,8 @@
 Blabber::Application.routes.draw do
+  root :to => 'events#index'
+
+  resources :users
+
   resources :comments
 
   resources :ratings
