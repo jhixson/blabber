@@ -14,6 +14,8 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
+    @comments = Comment.find_all_by_event_id(@event.id)
+    @comment = Comment.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -29,7 +31,7 @@ class EventsController < ApplicationController
     current_user.vote_for(@event) if Time.now - @last_vote.created_at >= @interval
     respond_to do |format|
       format.html { redirect_to @event }
-      format.js { render :nothing => true }
+      format.js { render 'vote_result' }
     end
   end
 
@@ -41,7 +43,7 @@ class EventsController < ApplicationController
     current_user.vote_against(@event) if Time.now - @last_vote.created_at >= @interval
     respond_to do |format|
       format.html { redirect_to @event }
-      format.js { render :nothing => true }
+      format.js { render 'vote_result' }
     end
   end
 

@@ -21,6 +21,26 @@ class CommentsController < ApplicationController
     end
   end
 
+  # POST /comments/1/vote_up
+  def vote_up
+    @comment = Comment.find(params[:id])
+    current_user.vote_for(@comment) if @comment.votes.count == 0
+    respond_to do |format|
+      format.html { redirect_to @comment }
+      format.js { render 'vote_result' }
+    end
+  end
+
+  # POST /comments/1/vote_down
+  def vote_down
+    @comment = Comment.find(params[:id])
+    current_user.vote_against(@comment) if @comment.votes.count == 0
+    respond_to do |format|
+      format.html { redirect_to @comment }
+      format.js { render 'vote_result' }
+    end
+  end
+
   # GET /comments/new
   # GET /comments/new.json
   def new

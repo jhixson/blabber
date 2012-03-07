@@ -2,7 +2,6 @@
 
 <table>
   <tr>
-    <th>Rating</th>
     <th>Comment text</th>
     <th></th>
     <th></th>
@@ -11,7 +10,6 @@
 
 <% @comments.each do |comment| %>
   <tr>
-    <td><%= comment.rating_id %></td>
     <td><%= comment.comment_text %></td>
     <td><%= link_to 'Show', comment %></td>
     <td><%= link_to 'Edit', edit_comment_path(comment) %></td>

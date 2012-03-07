@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<div class="event">
 <p>
   <b>Subcategory:</b>
   <%= @event.subcategory_id %>
@@ -33,6 +34,26 @@
 <span class="plusminus">(<%= @event.plusminus %>)</span> |
 <%= link_to 'Vote Up', vote_up_event_path(@event), :remote => true, :method => :post %> |
 <%= link_to 'Vote Down', vote_down_event_path(@event), :remote => true, :method => :post %>
+</div>
+
+<% @comments.each do |comment| %>
+  <blockquote class="comment" data-id=<%= comment.id %>>
+    <%= comment.comment_text.html_safe %>
+    <span class="plusminus">(<%= comment.plusminus %>)</span> |
+    <%= link_to 'Vote Up', vote_up_comment_path(comment), :remote => true, :method => :post %> |
+    <%= link_to 'Vote Down', vote_down_comment_path(comment), :remote => true, :method => :post %>
+  </blockquote>
+<% end %>
+<%= form_for @comment do |f| %>
+  <%= hidden_field :comment, :event_id, { :value => @event.id } %>
+  <div class="field">
+    <%= f.label :comment_text, "Your comment" %>
+    <%= f.text_area :comment_text %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
