@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :fname, :lname, :encrypted_password
 
   acts_as_voter
+  devise :omniauthable
 end
