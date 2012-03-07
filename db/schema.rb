@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120306204458) do
+ActiveRecord::Schema.define(:version => 20120306212221) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(:version => 20120306204458) do
   end
 
   create_table "comments", :force => true do |t|
-    t.integer  "rating_id"
     t.text     "comment_text"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "event_id"
   end
 
   create_table "events", :force => true do |t|
@@ -35,6 +35,13 @@ ActiveRecord::Schema.define(:version => 20120306204458) do
     t.integer  "vote_interval"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "favorites", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "ratings", :force => true do |t|

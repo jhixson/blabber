@@ -1,3 +1,4 @@
 class Comment < ActiveRecord::Base
-  belongs_to :rating
+  belongs_to :event
+  acts_as_voteable
 end

@@ -1,4 +1,6 @@
 Blabber::Application.routes.draw do
+  resources :favorites
+
   devise_for :users
 
   root :to => 'events#index'
