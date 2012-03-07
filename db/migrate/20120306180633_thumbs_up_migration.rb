@@ -14,7 +14,7 @@ class ThumbsUpMigration < ActiveRecord::Migration
 
 
     # Comment out the line below to allow multiple votes per voter on a single entity.  
-    add_index :votes, [:voter_id, :voter_type, :voteable_id, :voteable_type], :unique => true, :name => 'fk_one_vote_per_user_per_entity'
+    # add_index :votes, [:voter_id, :voter_type, :voteable_id, :voteable_type], :unique => true, :name => 'fk_one_vote_per_user_per_entity'
 
   end
 

@@ -21,6 +21,28 @@ class EventsController < ApplicationController
     end
   end
 
+  # POST /events/1/vote_up
+  def vote_up
+    @event = Event.find(params[:id])
+    logger.info "CURRENT USER: #{current_user}"
+    current_user.vote_for(@event)
+    respond_to do |format|
+      format.html { redirect_to @event }
+      format.js { render :nothing => true }
+    end
+  end
+
+  # POST /events/1/vote_down
+  def vote_down
+    @event = Event.find(params[:id])
+    logger.info "CURRENT USER: #{current_user}"
+    current_user.vote_against(@event)
+    respond_to do |format|
+      format.html { redirect_to @event }
+      format.js { render :nothing => true }
+    end
+  end
+
   # GET /events/new
   # GET /events/new.json
   def new

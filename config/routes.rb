@@ -12,6 +12,8 @@ Blabber::Application.routes.draw do
   resources :ratings
 
   resources :events
+  post 'events/:id/vote_up' => 'events#vote_up', :as => :vote_up_event
+  post 'events/:id/vote_down' => 'events#vote_down', :as => :vote_down_event
 
   resources :subcategories
 

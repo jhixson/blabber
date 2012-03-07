@@ -30,6 +30,10 @@
   <%= @event.vote_interval %>
 </p>
 
+<span class="plusminus">(<%= @event.plusminus %>)</span> |
+<%= link_to 'Vote Up', vote_up_event_path(@event), :remote => true, :method => :post %> |
+<%= link_to 'Vote Down', vote_down_event_path(@event), :remote => true, :method => :post %>
+
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
