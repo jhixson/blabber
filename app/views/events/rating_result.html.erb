@@ -1,0 +1,11 @@
+<div data-role="page" id="events" data-title="Events">
+
+  <%= @event %>
+  <div data-role="content">
+    <div class="content-primary">
+      <p>Thanks for rating!</p>
+      <%= link_to "Go Back", event_path(@event), :"data-role" => "button" %>
+    </div>
+  </div>
+
+</div>

@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Category.all
+    @page_title = "Choose your College"
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,6 +19,19 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @category }
+    end
+  end
+
+  # GET /categories/1/subcategories
+  # GET /categories/1/subcategories.json
+  def subcategories
+    @category = Category.find(params[:id])
+    @subcategories = @category.subcategories
+    @page_title = "Choose the Department"
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @subcategories }
     end
   end
 

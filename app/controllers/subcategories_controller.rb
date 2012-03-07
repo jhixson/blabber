@@ -3,6 +3,7 @@ class SubcategoriesController < ApplicationController
   # GET /subcategories.json
   def index
     @subcategories = Subcategory.all
+    @page_title = "Choose the Department"
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,6 +19,19 @@ class SubcategoriesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @subcategory }
+    end
+  end
+
+  # GET /subcategories/1/events
+  # GET /subcategories/1/events.json
+  def events
+    @subcategory = Subcategory.find(params[:id])
+    @events = @subcategory.events
+    @page_title = "Choose the Class"
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @events }
     end
   end
 

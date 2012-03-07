@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     current_user.vote_for(@comment) if @comment.votes.count == 0
     respond_to do |format|
-      format.html { redirect_to @comment }
+      #format.html { render :nothing => true }
       format.js { render 'vote_result' }
     end
   end
@@ -36,7 +36,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     current_user.vote_against(@comment) if @comment.votes.count == 0
     respond_to do |format|
-      format.html { redirect_to @comment }
+      #format.html { render :nothing => true }
       format.js { render 'vote_result' }
     end
   end

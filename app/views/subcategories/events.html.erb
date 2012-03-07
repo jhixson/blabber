@@ -1,12 +1,12 @@
-<div data-role="page" id="subcategories" data-title="Subcategories">
+<div data-role="page" id="events" data-title="Events">
 
   <%= render :partial => 'shared/header' %>
 
   <div data-role="content">
     <div class="content-primary">
       <ul data-role="listview">
-         <% @subcategories.each do |category| %>
-           <li><a href=""><%= subcategory.name %></a></li>
+         <% @events.each do |event| %>
+           <li><%= link_to event.name, event %></li>
          <% end %>
       </ul>
     </div>

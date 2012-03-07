@@ -1,17 +1,33 @@
-<h2>Sign in</h2>
+<div data-role="page" id="home" data-title="Sign In">
 
+<%= render :partial => 'shared/header' %>
+
+<div data-role="content">
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
+  <div><%= f.label :email, "Email:" %>
   <%= f.email_field :email %></div>
-
-  <div><%= f.label :password %><br />
+  <br />
+  <div><%= f.label :password, "Password:" %>
   <%= f.password_field :password %></div>
-
+  <!--
   <% if devise_mapping.rememberable? -%>
     <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
   <% end -%>
+  -->
 
-  <div><%= f.submit "Sign in" %></div>
+  <input type="image" vspace="5" data-role="none" name="commit" src="<%= image_path('submit_go.png') %>" width="69" height="35" border="0" />
+
+  <p>Or Login With:</p>
+  
+  <p>
+    <%= link_to image_tag('icon_facebook.png', { :width => 48, :height => 48 }), user_omniauth_authorize_path(:facebook) %>
+    <%= link_to image_tag('icon_twitter.png', { :width => 48, :height => 48 }), user_omniauth_authorize_path(:twitter) %>
+  </p>
+  
 <% end %>
 
 <%= render "links" %>
+</div>
+
+<%= render :partial => 'shared/footer' %>
+</div>

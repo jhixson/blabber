@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
   def self.find_or_create_from_auth_hash(access_token, signed_in_resource=nil)
     logger.info access_token
-    data = access_token.raw_info
+    data = access_token.extra.raw_info
     if user = User.where(:email => data.email).first
       user
     else # Create a user with a stub password. 

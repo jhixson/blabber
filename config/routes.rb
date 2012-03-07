@@ -2,25 +2,29 @@ Blabber::Application.routes.draw do
   resources :favorites
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  match '/auth/:provider/callback', to: 'sessions#create'
+  match 'auth/:provider/callback', to: 'sessions#create'
 
   root :to => 'events#index'
 
   resources :users
 
   resources :comments
-  post 'comments/:id/vote_up' => 'comments#vote_up', :as => :vote_up_comment
-  post 'comments/:id/vote_down' => 'comments#vote_down', :as => :vote_down_comment
+  match 'comments/:id/vote_up' => 'comments#vote_up', :as => :vote_up_comment
+  match 'comments/:id/vote_down' => 'comments#vote_down', :as => :vote_down_comment
 
   resources :ratings
 
+  get 'events/rating_result'
+  match 'events/:id/rate' => 'events#rate', :as => :rate_event
   resources :events
-  post 'events/:id/vote_up' => 'events#vote_up', :as => :vote_up_event
-  post 'events/:id/vote_down' => 'events#vote_down', :as => :vote_down_event
+  match 'events/:id/vote_up' => 'events#vote_up', :as => :vote_up_event
+  match 'events/:id/vote_down' => 'events#vote_down', :as => :vote_down_event
 
   resources :subcategories
+  match 'subcategories/:id/events', to: 'subcategories#events', :as => "list_events"
 
   resources :categories
+  match 'categories/:id/subcategories', to: 'categories#subcategories', :as => "list_subcategories"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

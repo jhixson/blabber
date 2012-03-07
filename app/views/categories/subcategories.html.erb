@@ -5,8 +5,8 @@
   <div data-role="content">
     <div class="content-primary">
       <ul data-role="listview">
-         <% @subcategories.each do |category| %>
-           <li><a href=""><%= subcategory.name %></a></li>
+         <% @subcategories.each do |subcategory| %>
+           <li><%= link_to subcategory.name, list_events_path(subcategory) %></li>
          <% end %>
       </ul>
     </div>

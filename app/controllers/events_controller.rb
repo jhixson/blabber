@@ -16,6 +16,17 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @comments = Comment.find_all_by_event_id(@event.id)
     @comment = Comment.new
+    @page_title = "Rate #{@event.name}"
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @event }
+    end
+  end
+
+  def rate
+    @event = Event.find(params[:id])
+    @page_title = "Rate #{@event.name}"
 
     respond_to do |format|
       format.html # show.html.erb
@@ -30,7 +41,7 @@ class EventsController < ApplicationController
     @last_vote = @event.votes.last
     current_user.vote_for(@event) if Time.now - @last_vote.created_at >= @interval
     respond_to do |format|
-      format.html { redirect_to @event }
+      format.html { render 'rating_result' }
       format.js { render 'vote_result' }
     end
   end
@@ -42,9 +53,13 @@ class EventsController < ApplicationController
     @last_vote = @event.votes.last
     current_user.vote_against(@event) if Time.now - @last_vote.created_at >= @interval
     respond_to do |format|
-      format.html { redirect_to @event }
+      format.html { render 'rating_result' }
       format.js { render 'vote_result' }
     end
+  end
+
+  def rating_result
+
   end
 
   # GET /events/new

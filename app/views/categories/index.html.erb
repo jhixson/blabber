@@ -1,23 +1,15 @@
-<h1>Listing categories</h1>
+<div data-role="page" id="categories" data-title="Categories">
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <%= render :partial => 'shared/header' %>
 
-<% @categories.each do |category| %>
-  <tr>
-    <td><%= category.name %></td>
-    <td><%= link_to 'Show', category %></td>
-    <td><%= link_to 'Edit', edit_category_path(category) %></td>
-    <td><%= link_to 'Destroy', category, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+  <div data-role="content">
+    <% options = options_from_collection_for_select(Category.all(:order => :name), :id, :name) %>
+    <%= select_tag :category_id, options, {} %>
+  </div>
 
-<br />
+  <div style="width: 69px; margin: 0 auto;">
+    <input type="image" vspace="5" data-role="none" name="choose_category" src="<%= image_path('submit_go.png') %>" width="69" height="35" border="0" />
+  </div>
 
-<%= link_to 'New Category', new_category_path %>
+  <%= render :partial => 'shared/footer' %>
+</div>
