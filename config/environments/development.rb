@@ -36,4 +36,7 @@ Blabber::Application.configure do
   config.assets.debug = true
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  TWITTER_KEY = 'bUeHbKA8ZcmdHjr0fuon2A'
+  TWITTER_SECRET = 'yBriC8qxaY5bL2qlKmFvsvMRXDglZ7rpvSXbAS5pBZU'
 end

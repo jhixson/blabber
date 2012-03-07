@@ -23,7 +23,8 @@
   </li>
 <% end %>
 
-<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %> | 
+<%= link_to "Sign in with twitter", '/auth/twitter/callback' %>
 
 </body>
 </html>
