@@ -24,8 +24,9 @@ class EventsController < ApplicationController
   # POST /events/1/vote_up
   def vote_up
     @event = Event.find(params[:id])
-    logger.info "CURRENT USER: #{current_user}"
-    current_user.vote_for(@event)
+    @interval = @event.vote_interval
+    @last_vote = @event.votes.last
+    current_user.vote_for(@event) if Time.now - @last_vote.created_at >= @interval
     respond_to do |format|
       format.html { redirect_to @event }
       format.js { render :nothing => true }
@@ -35,8 +36,9 @@ class EventsController < ApplicationController
   # POST /events/1/vote_down
   def vote_down
     @event = Event.find(params[:id])
-    logger.info "CURRENT USER: #{current_user}"
-    current_user.vote_against(@event)
+    @interval = @event.vote_interval
+    @last_vote = @event.votes.last
+    current_user.vote_against(@event) if Time.now - @last_vote.created_at >= @interval
     respond_to do |format|
       format.html { redirect_to @event }
       format.js { render :nothing => true }

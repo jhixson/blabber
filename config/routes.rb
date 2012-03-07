@@ -8,6 +8,8 @@ Blabber::Application.routes.draw do
   resources :users
 
   resources :comments
+  post 'comments/:id/vote_up' => 'comments#vote_up', :as => :vote_up_comment
+  post 'comments/:id/vote_down' => 'comments#vote_down', :as => :vote_down_comment
 
   resources :ratings
 
