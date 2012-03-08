@@ -38,12 +38,13 @@
     <ul data-role="listview" class="comment_list">
     <% @comments.each do |comment| %>
       <li class="comment ui-li-static" data-id=<%= comment.id %>>
-        <p class="ui-li-aside ui-li-desc"><strong>6:24</strong>PM<br />
-        <%= link_to '+', vote_up_comment_path(comment), :remote => true, :method => :post, :class => "comment_vote" %>
-        <%= link_to '-', vote_down_comment_path(comment), :remote => true, :method => :post, :class => "comment_vote" %> 
-        <span class="plusminus">(<%= comment.plusminus %>)</span>
+        <p class="ui-li-aside ui-li-desc">
+        <%= link_to image_tag('rate_up.png'), vote_up_comment_path(comment), :remote => true, :method => :post, :class => "comment_vote" %><br /><%= link_to image_tag('rate_down.png'), vote_down_comment_path(comment), :remote => true, :method => :post, :class => "comment_vote" %> 
         </p>
-        <p class="ul-li-desc"><%= comment.comment_text.html_safe %></p>
+        <p class="ui-li-desc">
+          <em><%= comment.created_at.strftime('%m/%e/%Y') %></em><br />
+          <%= comment.comment_text.html_safe %>
+        </p>
       </li>
   <% end %>
   </ul>

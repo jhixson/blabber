@@ -63,6 +63,26 @@ class EventsController < ApplicationController
 
   end
 
+  # GET /events/1/favorite
+  def favorite
+    @event = Event.find(params[:id])
+    @fav = Favorite.find_all_by_event_id(@event.id)
+    if @fav.count == 0
+      @fav = Favorite.new
+      @fav.user_id = current_user.id
+      @fav.event_id = @event.id
+      @fav.save
+      @favorite_message = "Added to favorites."
+    else
+      @fav.first.destroy
+      @favorite_message = "Removed from favorites."
+    end
+    respond_to do |format|
+      format.html 
+      #format.js { render 'vote_result' }
+    end
+  end
+
   # GET /events/new
   # GET /events/new.json
   def new

@@ -10,7 +10,7 @@
     <div id="back"></div>
     <div id="back" class="heart">
       <% if @show_heart %>
-        <%= link_to image_tag('favorite.png'), '/favorites' %>
+        <%= link_to image_tag('favorite.png'), favorite_event_path(@event), :"data-transition" => "pop" %>
       <% end %>
     </div>
 

@@ -16,6 +16,7 @@ Blabber::Application.routes.draw do
 
   get 'events/rating_result'
   match 'events/:id/rate' => 'events#rate', :as => :rate_event
+  match 'events/:id/favorite' => 'events#favorite', :as => :favorite_event
   resources :events
   match 'events/:id/vote_up' => 'events#vote_up', :as => :vote_up_event
   match 'events/:id/vote_down' => 'events#vote_down', :as => :vote_down_event
