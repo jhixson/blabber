@@ -1,3 +1,4 @@
+var chart1;
 $('div[data-role="page"]').live('pageinit', function() {
   $('input[name=choose_category]').unbind('click');
   $('input[name=choose_category]').click(function() {

@@ -22,6 +22,9 @@ class EventsController < ApplicationController
     @show_heart = true
     @faved = Favorite.where(:user_id => current_user.id, :event_id => @event.id)
     @heart_active = !@faved.blank? ? ' active' : ''
+    @votes = @event.votes
+    @rating = 0
+    @data = []
 
     respond_to do |format|
       format.html # show.html.erb
@@ -93,6 +96,19 @@ class EventsController < ApplicationController
   def favorites
     @favorites = Favorite.find_all_by_user_id(current_user.id)
     @page_title = "My Classes"
+    respond_to do |format|
+      format.html 
+      #format.js { render 'vote_result' }
+    end
+  end
+
+  # GET /events/1/votes
+  def votes
+    @event = Event.find(params[:id])
+    @votes = @event.votes
+    @rating = 0
+    @data = []
+    @page_title = "Rating"
     respond_to do |format|
       format.html 
       #format.js { render 'vote_result' }
