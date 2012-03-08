@@ -106,3 +106,25 @@ a.ui-btn:hover {
 .ui-body-c a.heart:hover, .ui-body-c a.heart.active {
   background-position: top left;
 }
+
+.ui-body-c a.facebook_share, .ui-body-c a.twitter_share {
+  display: block;
+  width: 64px;
+  height: 45px;
+  text-indent: -9000px;
+}
+
+.ui-body-c a.facebook_share { background: transparent url('<%= image_path('facebook_share.png') %>') top left no-repeat; }
+.ui-body-c a.twitter_share { background: transparent url('<%= image_path('twitter_share.png') %>') top left no-repeat; }
+
+.ui-body-c a.heart:active, .ui-body-c a.heart.active {
+  background-position: bottom left;
+}
+
+#theCounter {
+  display: block;
+  width: 98%;
+  text-align: right;
+}
+.tcAlert { color: orange; }
+.tcWarn { color: red; }

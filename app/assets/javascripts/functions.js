@@ -28,4 +28,24 @@ $('div[data-role="page"]').live('pageinit', function() {
       link.toggleClass('active');
     });
   });
+
+  $('#theCounter').textCounter({
+    target: '#comment_comment_text' // required: string
+  });
+
+  $('a#post_comment').unbind('click');
+  $('a#post_comment').click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var link = $(this);
+    //$(this).closest('form').submit();
+    $.post(link.attr('href'), $(this).closest('form').serialize(), function(result) {
+      //window.location.reload(true);
+      var res = parseInt(result) || 0;
+      $.mobile.changePage('/events/'+res, {'transition':'pop'}, true, false);
+    });
+  });
+
+  if (window.location.hash == "#_=_")
+        window.location.hash = "";
 });

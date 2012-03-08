@@ -32,6 +32,7 @@ class EventsController < ApplicationController
   def rate
     @event = Event.find(params[:id])
     @page_title = "Rate #{@event.name}"
+    @comment = Comment.new
 
     respond_to do |format|
       format.html # show.html.erb

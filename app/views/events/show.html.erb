@@ -48,17 +48,6 @@
       </li>
   <% end %>
   </ul>
-  <br />
-  <%= form_for @comment do |f| %>
-    <%= hidden_field :comment, :event_id, { :value => @event.id } %>
-    <div class="field">
-      <%= f.label :comment_text, "Post comment" %>
-      <%= f.text_area :comment_text %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-  <% end %>
   </div>
 </div>
 

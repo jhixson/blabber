@@ -2,7 +2,19 @@
 
   <div data-role="content">
     <div class="content-primary">
-    <div style="width: 262px; margin: 0 auto;">
+      <div style="width: 262px; margin: 0 auto;">
+        <%= form_for @comment do |f| %>
+          <%= hidden_field :comment, :event_id, { :value => @event.id } %>
+          <div class="field">
+            <%= f.label :comment_text, "What's going on in class right now?" %>
+            <%= f.text_area :comment_text %>
+            <span id="theCounter">140</span>
+          </div>
+          <div class="actions">
+            <%= link_to "Post comment", comments_url, :"data-ajax" => false, :"data-role" => "button", :id => "post_comment" %>
+          </div>
+        <% end %>
+     <br />
       <%= link_to image_tag('thumb_up.png'), vote_up_event_path(@event), :remote => true, :method => :post, :class => "thumb", :"data-rel" => "back" %>
       <%= link_to image_tag('thumb_down.png'), vote_down_event_path(@event), :remote => true, :method => :post, :class => "thumb", :"data-rel" => "back" %>
 

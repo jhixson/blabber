@@ -22,10 +22,10 @@ class User < ActiveRecord::Base
   def self.find_or_create_from_auth_hash(access_token, signed_in_resource=nil)
     logger.info access_token.extra.raw_info
     data = access_token.extra.raw_info
-    if user = User.where(:email => data.email).first
+    if user = User.where(:email => data.nickname).first
       user
     else # Create a user with a stub password. 
-      User.create!(:email => data.email, :password => Devise.friendly_token[0,20]) 
+      User.create!(:email => data.nickname, :password => Devise.friendly_token[0,20]) 
     end
   end
 end

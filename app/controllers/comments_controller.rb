@@ -63,8 +63,10 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
 
     respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+      if !@comment.comment_text.blank? && @comment.save
+        #format.html { redirect_to events_path(@comment.event) }
+        #ormat.js { render :nothing => true }
+        format.js { render :text => @comment.event_id }
         format.json { render json: @comment, status: :created, location: @comment }
       else
         format.html { render action: "new" }
