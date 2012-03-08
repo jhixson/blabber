@@ -1,10 +1,14 @@
   <div data-role="footer" data-id="myfooter" data-position="fixed" id="footer">
     <table align="center" border="0" cellpadding="0" cellspacing="0"><tr><td>
-    <% if !@category.blank? %>
-    <div id="link"><a href=""><%= link_to image_tag('nav_1.png', { :alt => "find" }), list_subcategories_path(@category) %></a></div>
+    <% if !@category.blank? || !cookies[:category].blank? %>
+        <div id="link"><a href=""><%= link_to image_tag('nav_1.png', { :alt => "find" }), list_subcategories_path(@category || cookies[:category]) %></a></div>
     <% end %>
-    <div id="link"><a href=""><%= image_tag 'nav_2.png', { :alt => "favorites" } %></a></div>
-    <div id="link"><a href=""><%= image_tag 'nav_3.png', { :alt => "my info" } %></a></div>
-    <div id="link"><a href=""><%= image_tag 'nav_4.png', { :alt => "RATE IT" } %></a></div>
+    <div id="link"><a href=""><%= link_to image_tag('nav_2.png', { :alt => "favorites" }), favorite_events_path %></a></div>
+    <% if !current_user.blank? %>
+        <div id="link"><a href=""><%= link_to image_tag('nav_3.png', { :alt => "my info" }), '/users/edit' %></a></div>
+    <% end %>
+    <% if !@event.blank? %>
+        <div id="link"><a href=""><%= link_to image_tag('nav_4.png', { :alt => "RATE IT" }), rate_event_path(@event), :"data-transition" => "pop" %></a></div>
+    <% end %>
     </td></tr></table>
   </div><!-- /footer -->

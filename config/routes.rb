@@ -4,7 +4,7 @@ Blabber::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   match 'auth/:provider/callback', to: 'sessions#create'
 
-  root :to => 'users#sign_in'
+  root :to => 'categories#index'
 
   resources :users
 
@@ -17,6 +17,7 @@ Blabber::Application.routes.draw do
   get 'events/rating_result'
   match 'events/:id/rate' => 'events#rate', :as => :rate_event
   match 'events/:id/favorite' => 'events#favorite', :as => :favorite_event
+  match 'events/favorites' => 'events#favorites', :as => :favorite_events
   resources :events
   match 'events/:id/vote_up' => 'events#vote_up', :as => :vote_up_event
   match 'events/:id/vote_down' => 'events#vote_down', :as => :vote_down_event

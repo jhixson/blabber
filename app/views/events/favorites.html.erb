@@ -1,0 +1,16 @@
+<div data-role="page" id="favorites" data-title="Favorites">
+
+  <%= render :partial => 'shared/header' %>
+
+  <div data-role="content">
+    <div class="content-primary">
+      <ul data-role="listview">
+         <% @favorites.each do |favorite| %>
+           <li><%= link_to favorite.event.name, favorite.event %></li>
+         <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <%= render :partial => 'shared/footer' %>
+</div>

@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /events
   # GET /events.json
   def index
@@ -18,6 +20,8 @@ class EventsController < ApplicationController
     @comment = Comment.new
     @page_title = "Rate #{@event.name}"
     @show_heart = true
+    @faved = Favorite.where(:user_id => current_user.id, :event_id => @event.id)
+    @heart_active = !@faved.blank? ? ' active' : ''
 
     respond_to do |format|
       format.html # show.html.erb
@@ -77,6 +81,17 @@ class EventsController < ApplicationController
       @fav.first.destroy
       @favorite_message = "Removed from favorites."
     end
+    respond_to do |format|
+      #format.html 
+      #format.js { render 'vote_result' }
+      format.js { render :nothing => true }
+    end
+  end
+
+  # GET /events/favorites
+  def favorites
+    @favorites = Favorite.find_all_by_user_id(current_user.id)
+    @page_title = "My Classes"
     respond_to do |format|
       format.html 
       #format.js { render 'vote_result' }

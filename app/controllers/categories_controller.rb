@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /categories
   # GET /categories.json
   def index
@@ -28,6 +30,8 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @subcategories = @category.subcategories
     @page_title = "Choose the Department"
+
+    cookies[:category] = { :value => @category.id, :expires => 7.days.from_now }
 
     respond_to do |format|
       format.html # show.html.erb

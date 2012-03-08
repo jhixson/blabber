@@ -81,6 +81,7 @@ background-image: radial-gradient(center, circle farthest-corner, #2696a3 0%, #0
 
 a:hover { background: none; }
 input.ui-input-text { color: #000; }
+.ui-body-c textarea { color: #000; }
 
 .ui-listview.comment_list { margin: 0 auto; }
 .ui-listview.comment_list li p { color: #000; }
@@ -88,3 +89,20 @@ input.ui-input-text { color: #000; }
 .ui-listview .ui-li-aside { width: 25%; }
 .ui-dialog p { color: #000; }
 .comment_list .ui-li-desc { margin: 0 0 .6em 0; }
+
+a.ui-btn:hover {
+  background: #dadada;
+  color: #101010;
+}
+
+.ui-body-c a.heart {
+  display: block;
+  width: 22px;
+  height: 22px;
+  background: transparent url('<%= image_path('heart.png') %>') bottom left no-repeat;
+  text-indent: -9000px;
+}
+
+.ui-body-c a.heart:hover, .ui-body-c a.heart.active {
+  background-position: top left;
+}

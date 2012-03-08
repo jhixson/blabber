@@ -17,4 +17,15 @@ $('div[data-role="page"]').live('pageinit', function() {
       link.closest('.comment').find('.plusminus').text('('+res+')');
     });
   });
+
+  $('a.heart').unbind('click');
+  $('a.heart').click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var link = $(this);
+    $.get(link.attr('href'), function(result) {
+      console.log(result);
+      link.toggleClass('active');
+    });
+  });
 });

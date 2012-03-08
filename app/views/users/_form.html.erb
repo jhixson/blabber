@@ -1,33 +1,32 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div data-role="page" id="events" data-title="Events">
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+  <%= render :partial => 'shared/header' %>
+
+  <div data-role="content">
+    <div class="content-primary">
+      <%= form_for(@user) do |f| %>
+      <div class="field">
+        <%= f.label :fname, "First name" %>
+        <%= f.text_field :fname %>
+      </div>
+      <div class="field">
+        <%= f.label :lname, "Last name" %>
+        <%= f.text_field :lname %>
+      </div>
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+      </div>
+      <div class="field">
+        <%= f.label :encrypted_password %>
+        <%= f.text_field :encrypted_password %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
       <% end %>
-      </ul>
     </div>
-  <% end %>
+  </div>
 
-  <div class="field">
-    <%= f.label :fname %><br />
-    <%= f.text_field :fname %>
-  </div>
-  <div class="field">
-    <%= f.label :lname %><br />
-    <%= f.text_field :lname %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :encrypted_password %><br />
-    <%= f.text_field :encrypted_password %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+  <%= render :partial => 'shared/footer' %>
+</div>

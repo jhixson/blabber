@@ -1,16 +1,17 @@
 <div id="header2">
-  <%= image_tag 'logo_long.png' %>
+  <% home_link = !cookies[:category].blank? ? list_subcategories_path(cookies[:category]) : root_url %>
+  <%= link_to (image_tag 'logo_long.png'), home_link %>
   </div>
   
   <div data-role="header">
     <div id="back" class="sign_up">
-      <%= link_to image_tag('btn_signup.png'), '/users/sign_up' %>
+      <%= link_to image_tag('btn_signup.png'), '/users/sign_up' if current_user == nil %>
     </div>
     <div id="headertext"><h1><%= !@page_title.blank? ? @page_title : 'Login' %></h1></div>
     <div id="back"></div>
     <div id="back" class="heart">
       <% if @show_heart %>
-        <%= link_to image_tag('favorite.png'), favorite_event_path(@event), :"data-transition" => "pop" %>
+        <%= link_to "Favorites", favorite_event_path(@event), :class => "heart #{@heart_active}", :"data-transition" => "pop" %>
       <% end %>
     </div>
 
