@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
     current_user.vote_for(@comment) if @comment.votes.count == 0
     respond_to do |format|
       #format.html { render :nothing => true }
-      format.js { render 'vote_result' }
+      format.js { render :text => @comment.plusminus }
     end
   end
 
@@ -37,7 +37,7 @@ class CommentsController < ApplicationController
     current_user.vote_against(@comment) if @comment.votes.count == 0
     respond_to do |format|
       #format.html { render :nothing => true }
-      format.js { render 'vote_result' }
+      format.js { render :text => @comment.plusminus }
     end
   end
 

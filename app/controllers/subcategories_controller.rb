@@ -26,6 +26,7 @@ class SubcategoriesController < ApplicationController
   # GET /subcategories/1/events.json
   def events
     @subcategory = Subcategory.find(params[:id])
+    @category = @subcategory.category
     @events = @subcategory.events
     @page_title = "Choose the Class"
 

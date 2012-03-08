@@ -4,7 +4,7 @@ Blabber::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   match 'auth/:provider/callback', to: 'sessions#create'
 
-  root :to => 'events#index'
+  root :to => 'users#sign_in'
 
   resources :users
 

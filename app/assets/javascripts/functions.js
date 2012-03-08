@@ -13,7 +13,8 @@ $('div[data-role="page"]').live('pageinit', function() {
     var link = $(this);
     $.post(link.attr('href'), function(result) {
       console.log(result);
-      //link.closest('.comment').find('.plusminus').text('(<%= @comment.plusminus %>)');
+      var res = parseInt(result) || 0;
+      link.closest('.comment').find('.plusminus').text('('+res+')');
     });
   });
 });

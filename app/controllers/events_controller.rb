@@ -17,6 +17,7 @@ class EventsController < ApplicationController
     @comments = Comment.find_all_by_event_id(@event.id)
     @comment = Comment.new
     @page_title = "Rate #{@event.name}"
+    @show_heart = true
 
     respond_to do |format|
       format.html # show.html.erb
