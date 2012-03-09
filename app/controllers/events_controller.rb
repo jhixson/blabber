@@ -24,7 +24,7 @@ class EventsController < ApplicationController
     @heart_active = !@faved.blank? ? ' active' : ''
     @votes = @event.votes
     @rating = 0
-    @data = []
+    @data = {}
 
     respond_to do |format|
       format.html # show.html.erb
@@ -50,8 +50,9 @@ class EventsController < ApplicationController
     @last_vote = @event.votes.last
     current_user.vote_for(@event) if Time.now - @last_vote.created_at >= @interval
     respond_to do |format|
-      format.html { render 'rating_result' }
-      format.js { render 'vote_result' }
+      #format.html { render 'rating_result' }
+      #format.js { render 'vote_result' }
+      format.js { render :text => @event.id }
     end
   end
 
@@ -62,8 +63,9 @@ class EventsController < ApplicationController
     @last_vote = @event.votes.last
     current_user.vote_against(@event) if Time.now - @last_vote.created_at >= @interval
     respond_to do |format|
-      format.html { render 'rating_result' }
-      format.js { render 'vote_result' }
+      #format.html { render 'rating_result' }
+      #format.js { render 'vote_result' }
+      format.js { render :text => @event.id }
     end
   end
 

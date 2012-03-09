@@ -1,12 +1,16 @@
-<div data-role="page" id="categories" data-title="Categories">
+<div data-role="page" id="event" data-title="Event">
 
   <%= render :partial => 'shared/header' %>
 
   <div data-role="content">
     <div class="content-primary">
     <div style="width: 320px; margin: 0 auto;">
-      <div id="container" style="width: 100%; height: 400px"></div>
-      <p><%= link_to image_tag('submit_rate.png'), rate_event_path(@event), :"data-transition" => "pop" %></p>
+      <div id="container" style="width: 100%; height: 250px"></div>
+      
+    </div>
+
+    <div style="width: 122px; margin: 0 auto;">
+      <p><%= link_to image_tag('submit_rate.png'), rate_event_path(@event) %></p>
     </div>
 
     <ul data-role="listview" class="comment_list">
@@ -30,22 +34,20 @@
 </div>
 
 <%
+@total = 0
 @votes.each do |vote|
+@data[vote.created_at.strftime('%m/%e/%y')] = @total
 if vote.vote
-  @rating = @rating + 1 
+  @data[vote.created_at.strftime('%m/%e/%y')] += 1
 else
-  @rating = @rating - 1 
+  @data[vote.created_at.strftime('%m/%e/%y')] -= 1
 end
-
-if @data.empty? || (@data.last - @rating).abs >= 3
-  @data.push(@rating)
-
-end
+@total = @data[vote.created_at.strftime('%m/%e/%y')]
 end
 %>
 
 <script type="text/javascript">
-$('div[data-role="page"]').live('pagecreate', function() {
+$('#event').live('pageinit', function() {
   console.log("PAGE LOADED");
   chart = new Highcharts.Chart({
     chart: {
@@ -56,7 +58,10 @@ $('div[data-role="page"]').live('pagecreate', function() {
     },
     title: {
       text: 'Rating Over Time',
-      x: -20 //center
+      x: -9000 //center
+    },
+    xAxis: {
+      categories: [<% @data.keys.each {|k| concat "'#{k}',"} %>]
     },
     yAxis: {
       title: {
@@ -76,7 +81,7 @@ $('div[data-role="page"]').live('pagecreate', function() {
     },
     series: [{
       name: 'Rating',
-      data: <%= @data.each {|d| print d} %>
+      data: [<%= @data.values.join(',') %>]
     }]
   });
 });

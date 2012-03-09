@@ -1,5 +1,7 @@
 <div data-role="page" id="rate" data-title="Rate">
 
+  <%= render :partial => 'shared/header' %>
+
   <div data-role="content">
     <div class="content-primary">
       <div style="width: 262px; margin: 0 auto;">
@@ -17,11 +19,11 @@
      <br />
       <%= link_to image_tag('thumb_up.png'), vote_up_event_path(@event), :remote => true, :method => :post, :class => "thumb", :"data-rel" => "back" %>
       <%= link_to image_tag('thumb_down.png'), vote_down_event_path(@event), :remote => true, :method => :post, :class => "thumb", :"data-rel" => "back" %>
-
-      <a href="#" data-rel="back" data-role="button">Cancel</a>
     </div>
 
   </div>
 </div>
+
+<%= render :partial => 'shared/footer' %>
 
 </div>

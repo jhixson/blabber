@@ -2,20 +2,16 @@
 
 <%
 @days = {}
+@total = 0
 @votes.each do |vote|
-if vote.vote
-  @rating = @rating + 1 
-else
-  @rating = @rating - 1 
-end
-
-logger.info vote.created_at.strftime('%Y-%m-%d')
-
-if @days[vote.created_at.strftime('%Y-%m-%d')] == nil
-  @days[vote.created_at.strftime('%Y-%m-%d')] = 0
-else
-  @days[vote.created_at.strftime('%Y-%m-%d')] += @rating
-end
+  logger.info "#{vote.created_at.strftime('%Y-%m-%d')} #{vote.vote}"
+  @days[vote.created_at.strftime('%Y-%m-%d')] = @total
+  if vote.vote
+    @days[vote.created_at.strftime('%Y-%m-%d')] += 1
+  else
+    @days[vote.created_at.strftime('%Y-%m-%d')] -= 1
+  end
+  @total = @days[vote.created_at.strftime('%Y-%m-%d')]
 end
 
 %>
