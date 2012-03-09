@@ -31,6 +31,7 @@ Blabber::Application.routes.draw do
 
   match 'contact' => 'contact#index'
   post 'contact/submit_contact'
+  get 'contact/list'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

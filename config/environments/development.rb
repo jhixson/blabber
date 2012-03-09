@@ -35,17 +35,7 @@ Blabber::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.action_mailer.default_url_options = { :host => 'nerd-core.org' }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :tls                  => false,
-    :address              => "mail.nerd-core.org",
-    :domain               => 'nerd-core.org',
-    :user_name            => 'jesse+nerd-core.org',
-    :password             => 'jBh$102701!',
-    :authentication       => 'plain',
-    :enable_starttls_auto => true
-  }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   TWITTER_KEY = 'bUeHbKA8ZcmdHjr0fuon2A'
   TWITTER_SECRET = 'yBriC8qxaY5bL2qlKmFvsvMRXDglZ7rpvSXbAS5pBZU'

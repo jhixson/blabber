@@ -1,0 +1,14 @@
+<div data-role="page" id="contact_thanks" data-title="Thanks">
+
+  <% @page_title = "Thank You" %>
+  <%= render :partial => 'shared/header' %>
+
+  <div data-role="content">
+    <div class="content-primary">
+      <p class="center">Thanks! We'll be in touch if we need more information.</p>
+      <%= link_to "Go Back", list_subcategories_path(@category || cookies[:category]), :"data-role" => "button" %>
+    </div>
+  </div>
+
+  <%= render :partial => 'shared/footer' %>
+</div>
