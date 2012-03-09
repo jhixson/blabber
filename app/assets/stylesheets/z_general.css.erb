@@ -67,6 +67,8 @@ background-image: radial-gradient(center, circle farthest-corner, #2696a3 0%, #0
 #headertext h1{
 	font-size:12pt;
 	font-weight:normal;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 #headertextsolo h1{
@@ -114,10 +116,11 @@ a.ui-btn:hover {
   text-indent: -9000px;
 }
 
-.ui-body-c a.facebook_share { background: transparent url('<%= image_path('facebook_share.png') %>') top left no-repeat; }
-.ui-body-c a.twitter_share { background: transparent url('<%= image_path('twitter_share.png') %>') top left no-repeat; }
+span.share { float: left; margin: 10px 8px 0 0; }
+.ui-body-c a.facebook_share { float: left; background: transparent url('<%= image_path('facebook_share.png') %>') top left no-repeat; }
+.ui-body-c a.twitter_share { float: left; background: transparent url('<%= image_path('twitter_share.png') %>') top left no-repeat; }
 
-.ui-body-c a.heart:active, .ui-body-c a.heart.active {
+.ui-body-c a.heart:active, .ui-body-c a.heart.active, .ui-body-c a.facebook_share.active, .ui-body-c a.twitter_share.active {
   background-position: bottom left;
 }
 

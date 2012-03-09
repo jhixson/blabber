@@ -36,13 +36,13 @@
 <%
 @total = 0
 @votes.each do |vote|
-@data[vote.created_at.strftime('%m/%e/%y')] = @total
+@data[vote.created_at.getlocal.strftime('%m/%e/%y')] = @total
 if vote.vote
-  @data[vote.created_at.strftime('%m/%e/%y')] += 1
+  @data[vote.created_at.getlocal.strftime('%m/%e/%y')] += 1
 else
-  @data[vote.created_at.strftime('%m/%e/%y')] -= 1
+  @data[vote.created_at.getlocal.strftime('%m/%e/%y')] -= 1
 end
-@total = @data[vote.created_at.strftime('%m/%e/%y')]
+@total = @data[vote.created_at.getlocal.strftime('%m/%e/%y')]
 end
 %>
 
@@ -84,5 +84,6 @@ $('#event').live('pageinit', function() {
       data: [<%= @data.values.join(',') %>]
     }]
   });
+  $("#container .highcharts-legend, #printButton, #exportButton").hide();
 });
 </script>

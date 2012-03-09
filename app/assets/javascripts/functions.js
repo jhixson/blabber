@@ -43,7 +43,8 @@ $('div[data-role="page"]').live('pageinit', function() {
     $.post(link.attr('href'), $(this).closest('form').serialize(), function(result) {
       //window.location.reload(true);
       var res = parseInt(result) || 0;
-      $.mobile.changePage('/events/'+res, {'transition':'slide'}, true, false);
+      //$.mobile.changePage('/events/'+res, {'transition':'slide'}, true, false);
+      window.location.href = '/events/'+res;
     });
   });
 
@@ -56,9 +57,28 @@ $('div[data-role="page"]').live('pageinit', function() {
       $.post(link.attr('href'), function(result) {
         //window.location.reload(true);
         var res = parseInt(result) || 0;
-        $.mobile.changePage('/events/'+res, {'transition':'slide'}, true, false);
+        //$.mobile.changePage('/events/'+res, {'transition':'slide'}, true, false);
+        window.location.href = '/events/'+res;
       });
     });
+  });
+
+  /*
+   FB.login(function(response) {
+   if (response.authResponse) {
+     console.log('Welcome!  Fetching your information.... ');
+     FB.api('/me', function(response) {
+       console.log('Good to see you, ' + response.name + '.');
+     });
+   } else {
+     console.log('User cancelled login or did not fully authorize.');
+   }
+ },{'scope':'publish_stream'});
+*/
+
+  $('a.facebook_share, a.twitter_share').unbind('click');
+  $('a.facebook_share, a.twitter_share').live('click', function() {
+    $(this).toggleClass('active');
   });
 
   if (window.location.hash == "#_=_")
