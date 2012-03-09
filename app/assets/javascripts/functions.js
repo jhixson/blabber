@@ -58,27 +58,41 @@ $('div[data-role="page"]').live('pageinit', function() {
         //window.location.reload(true);
         var res = parseInt(result) || 0;
         //$.mobile.changePage('/events/'+res, {'transition':'slide'}, true, false);
-        window.location.href = '/events/'+res;
+        var body = $('#comment_comment_text').val();
+        if(body == '')
+          body = 'I just rated a class at RateMyClass.com';
+        if($('.facebook_share').is('.active')) {
+          FB.api('/me/feed', 'post', { message: body }, function(response) {
+            if (!response || response.error) {
+              console.log(response);
+              alert('There was a problem, please try again.')
+            } 
+            else {
+              console.log('Post ID: ' + response.id);
+              window.location.href = '/events/'+res;
+            }
+          });
+        }
+        else
+          window.location.href = '/events/'+res;
       });
     });
   });
 
-  /*
-   FB.login(function(response) {
-   if (response.authResponse) {
-     console.log('Welcome!  Fetching your information.... ');
-     FB.api('/me', function(response) {
-       console.log('Good to see you, ' + response.name + '.');
-     });
-   } else {
-     console.log('User cancelled login or did not fully authorize.');
-   }
- },{'scope':'publish_stream'});
-*/
-
-  $('a.facebook_share, a.twitter_share').unbind('click');
-  $('a.facebook_share, a.twitter_share').live('click', function() {
+  $('a.facebook_share').unbind('click');
+  $('a.facebook_share').click(function() {
     $(this).toggleClass('active');
+    FB.login(function(response) {
+     if (response.authResponse) {
+       console.log('Welcome!  Fetching your information.... ');
+       FB.api('/me', function(response) {
+         console.log('Good to see you, ' + response.name + '.');
+       });
+     } else {
+       console.log('User cancelled login or did not fully authorize.');
+       window.location.href = '/users/sign_in';
+     }
+   },{'scope':'publish_stream'});
   });
 
   if (window.location.hash == "#_=_")

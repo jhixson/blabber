@@ -29,6 +29,9 @@ Blabber::Application.routes.draw do
   resources :categories
   match 'categories/:id/subcategories', to: 'categories#subcategories', :as => "list_subcategories"
 
+  match 'contact' => 'contact#index'
+  post 'contact/submit_contact'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

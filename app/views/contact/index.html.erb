@@ -1,0 +1,26 @@
+<div data-role="page" id="contact" data-title="Contact">
+
+  <%= render :partial => 'shared/header' %>
+
+  <div data-role="content">
+    <div class="content-primary">
+
+      <%= form_tag '/contact/submit_contact' do -%>
+
+      <div class="field"><%= label_tag 'email' %>
+      <%= email_field_tag 'email' %></div>
+
+      <div class="field"><%= label_tag 'college', 'College / University' %>
+      <%= text_field_tag 'college' %></div>
+
+      <div class="field"><%= label_tag 'comment', 'Comments / Request class' %>
+      <%= text_area_tag 'comment' %></div>
+
+      <div class="actions"><%= image_submit_tag "submit_send.png" %></div>
+      <% end -%>
+
+  </div>
+</div>
+
+  <%= render :partial => 'shared/footer' %>
+</div>
