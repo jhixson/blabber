@@ -35,7 +35,18 @@ Blabber::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'ratemyclass.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :tls                  => true,
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'ratemyclass.com',
+    :user_name            => 'hixsonj@gmail.com',
+    :password             => 'jBh$102701!',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true
+  }
 
   TWITTER_KEY = 'bUeHbKA8ZcmdHjr0fuon2A'
   TWITTER_SECRET = 'yBriC8qxaY5bL2qlKmFvsvMRXDglZ7rpvSXbAS5pBZU'

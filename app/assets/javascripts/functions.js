@@ -95,6 +95,14 @@ $('div[data-role="page"]').live('pageinit', function() {
    },{'scope':'publish_stream'});
   });
 
+  $('a#submit_send').unbind('click');
+  $('a#submit_send').click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var link = $(this);
+    link.closest('form').submit();
+  });
+
   if (window.location.hash == "#_=_")
         window.location.hash = "";
 });
