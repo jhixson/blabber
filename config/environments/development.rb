@@ -35,14 +35,13 @@ Blabber::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.action_mailer.default_url_options = { :host => 'high-window-2889.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'nerd-core.org' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :tls                  => true,
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :domain               => 'high-window-2889.herokuapp.com',
-    :user_name            => 'hixsonj@gmail.com',
+    :tls                  => false,
+    :address              => "mail.nerd-core.org",
+    :domain               => 'nerd-core.org',
+    :user_name            => 'jesse+nerd-core.org',
     :password             => 'jBh$102701!',
     :authentication       => 'plain',
     :enable_starttls_auto => true
