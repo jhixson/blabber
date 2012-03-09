@@ -18,7 +18,7 @@ class ContactController < ApplicationController
     end
     respond_to do |format|
       format.html { redirect_to categories_path }
-      format.json { render json: @comments }
+      #format.json { render json: @comments }
     end
   end
 end
