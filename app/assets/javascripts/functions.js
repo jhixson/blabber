@@ -24,9 +24,9 @@ $('div[data-role="page"]').live('pageinit', function() {
     e.preventDefault();
     e.stopPropagation();
     var link = $(this);
+    link.toggleClass('active');
     $.get(link.attr('href'), function(result) {
       console.log(result);
-      link.toggleClass('active');
     });
   });
 
