@@ -59,7 +59,7 @@ $('div[data-role="page"]').live('pageinit', function() {
         //window.location.reload(true);
         var res = parseInt(result) || 0;
         //$.mobile.changePage('/events/'+res, {'transition':'slide'}, true, false);
-        var body = $('#comment_comment_text').val();
+        var body = 'I just rated the class ' + $('#headertext').text() + ' at RateMyClass.com.' + $('#comment_comment_text').val();
         if(body == '')
           body = 'I just rated the class ' + $('#headertext').text() + ' at RateMyClass.com';
         if($('.facebook_share').is('.active')) {
