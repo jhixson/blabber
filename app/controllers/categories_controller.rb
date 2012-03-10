@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.all.order('name ASC')
     @page_title = "Choose your College"
 
     respond_to do |format|
@@ -28,7 +28,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1/subcategories.json
   def subcategories
     @category = Category.find(params[:id])
-    @subcategories = @category.subcategories
+    @subcategories = @category.subcategories.order('name ASC')
     @page_title = "Choose the Department"
 
     cookies[:category] = { :value => @category.id, :expires => 7.days.from_now }
