@@ -1,5 +1,5 @@
 <div id="header2">
-  <% home_link = !cookies[:category].blank? ? list_subcategories_path(cookies[:category]) : root_url %>
+  <% home_link = !cookies[:category].blank? && !current_user.blank? ? list_subcategories_path(cookies[:category]) : root_url %>
   <%= link_to (image_tag 'logo_long.png'), home_link %>
   </div>
   

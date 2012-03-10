@@ -48,7 +48,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @interval = @event.vote_interval
     @last_vote = @event.votes.last
-    current_user.vote_for(@event) if Time.now - @last_vote.created_at >= @interval
+    current_user.vote_for(@event) if @last_vote == nil || Time.now - @last_vote.created_at >= @interval
     respond_to do |format|
       #format.html { render 'rating_result' }
       #format.js { render 'vote_result' }
@@ -61,7 +61,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @interval = @event.vote_interval
     @last_vote = @event.votes.last
-    current_user.vote_against(@event) if Time.now - @last_vote.created_at >= @interval
+    current_user.vote_against(@event) if @last_vote == nil || Time.now - @last_vote.created_at >= @interval
     respond_to do |format|
       #format.html { render 'rating_result' }
       #format.js { render 'vote_result' }
@@ -90,7 +90,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       #format.html 
       #format.js { render 'vote_result' }
-      format.js { render :nothing => true }
+      format.js { render :text => @favorite_message }
     end
   end
 

@@ -1,18 +1,27 @@
-<h2>Sign up</h2>
+<div data-role="page" id="register" data-title="Sign Up">
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <% @page_title = "Sign Up" %>
+  <%= render :partial => 'shared/header' %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+  <div data-role="content">
+    <div class="content-primary">
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+        <div class="field"><%= f.label :email %> <i>(don't worry, ratings always display anonymously)</i>
+        <%= f.email_field :email %></div>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+        <div class="field"><%= f.label :password %>
+        <%= f.password_field :password %></div>
 
-<%= render "links" %>
+        <div class="field"><%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %></div>
+
+        <div style="width: 69px; margin: 0 auto;"><input type="image" vspace="5" data-role="none" name="commit" src="<%= image_path('submit_go.png') %>" width="69" height="35" border="0" /></div>
+
+      <% end %>
+    </div>
+  </div>
+  <%= render :partial => 'shared/footer' %>
+</div>

@@ -27,6 +27,7 @@ $('div[data-role="page"]').live('pageinit', function() {
     link.toggleClass('active');
     $.get(link.attr('href'), function(result) {
       console.log(result);
+      
     });
   });
 

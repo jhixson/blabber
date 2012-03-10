@@ -6,6 +6,7 @@ Blabber::Application.routes.draw do
 
   root :to => 'categories#index'
 
+  devise_scope :user do match "/logout" => "devise/sessions#destroy" end
   resources :users
 
   resources :comments

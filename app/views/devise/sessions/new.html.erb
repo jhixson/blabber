@@ -21,12 +21,13 @@
   
   <p>
     <%= link_to image_tag('icon_facebook.png', { :width => 48, :height => 48 }), user_omniauth_authorize_path(:facebook), :"data-ajax" => "false" %>
+    <!--
     <%= link_to image_tag('icon_twitter.png', { :width => 48, :height => 48 }), user_omniauth_authorize_path(:twitter), :"data-ajax" => "false" %>
+  -->
   </p>
   
 <% end %>
 
-<%= render "links" %>
 </div>
 
 <%= render :partial => 'shared/footer' %>

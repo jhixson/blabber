@@ -121,10 +121,37 @@ span.share { float: left; margin: 10px 8px 0 0; }
 .ui-body-c a.facebook_share { float: left; background: transparent url('<%= image_path('facebook_share.png') %>') top left no-repeat; }
 .ui-body-c a.twitter_share { float: left; background: transparent url('<%= image_path('twitter_share.png') %>') top left no-repeat; }
 
-.ui-body-c a.heart:active, .ui-body-c a.heart.active, .ui-body-c a.facebook_share.active, .ui-body-c a.twitter_share.active {
+.ui-body-c a.facebook_share.active, .ui-body-c a.twitter_share.active {
   background-position: bottom left;
 }
 
+#footer a {
+  display: block;
+  height: 47px;
+  text-indent: -9000px;
+  width: 80px;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+#footer a.find_classes {
+  background-image: url('<%= image_path('find_classes.png') %>');
+}
+
+#footer a.my_classes {
+  background-image: url('<%= image_path('my_classes.png') %>');
+}
+
+#footer a.my_info {
+  background-image: url('<%= image_path('my_info.png') %>');
+}
+
+#footer a.rate_it {
+  background-image: url('<%= image_path('rate_it.png') %>');
+}
+
+#footer a.active { background-position: center -50px;}
+ 
 #theCounter {
   display: block;
   width: 98%;
