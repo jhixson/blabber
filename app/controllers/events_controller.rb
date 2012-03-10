@@ -16,7 +16,7 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
-    @comments = Comment.find_all_by_event_id(@event.id)
+    @comments = Comment.find_all_by_event_id(@event.id, :order => 'plusminus DESC')
     @comment = Comment.new
     max_length = 50
     title = @event.name[0..max_length]
@@ -25,7 +25,7 @@ class EventsController < ApplicationController
     @show_heart = true
     @faved = Favorite.where(:user_id => current_user.id, :event_id => @event.id)
     @heart_active = !@faved.blank? ? ' active' : ''
-    @votes = @event.votes(:order => 'created_at')
+    @votes = @event.votes(:order => 'created_at ASC')
     @rating = 0
     @data = {}
 
