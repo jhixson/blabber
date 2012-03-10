@@ -16,7 +16,7 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
-    @comments = Comment.find_all_by_event_id(@event.id, :order => 'plusminus DESC')
+    @comments = Comment.find_all_by_event_id(@event.id, :order => 'created_at ASC')
     @comment = Comment.new
     max_length = 50
     title = @event.name[0..max_length]
