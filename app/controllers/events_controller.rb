@@ -25,7 +25,7 @@ class EventsController < ApplicationController
     @show_heart = true
     @faved = Favorite.where(:user_id => current_user.id, :event_id => @event.id)
     @heart_active = !@faved.blank? ? ' active' : ''
-    @votes = @event.votes
+    @votes = @event.votes(:order => 'created_at')
     @rating = 0
     @data = {}
 
