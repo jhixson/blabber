@@ -21,7 +21,7 @@ class EventsController < ApplicationController
     max_length = 50
     title = @event.name[0..max_length]
     title << "..." if @event.name.length > max_length
-    @page_title = "Rate #{title}"
+    @page_title = title
     @show_heart = true
     @faved = Favorite.where(:user_id => current_user.id, :event_id => @event.id)
     @heart_active = !@faved.blank? ? ' active' : ''

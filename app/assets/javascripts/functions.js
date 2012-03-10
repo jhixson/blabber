@@ -61,7 +61,7 @@ $('div[data-role="page"]').live('pageinit', function() {
         //$.mobile.changePage('/events/'+res, {'transition':'slide'}, true, false);
         var body = $('#comment_comment_text').val();
         if(body == '')
-          body = 'I just rated a class at RateMyClass.com';
+          body = 'I just rated the class ' + $('#headertext').text() + ' at RateMyClass.com';
         if($('.facebook_share').is('.active')) {
           FB.api('/me/feed', 'post', { message: body }, function(response) {
             if (!response || response.error) {
