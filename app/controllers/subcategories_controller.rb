@@ -29,6 +29,7 @@ class SubcategoriesController < ApplicationController
     @category = @subcategory.category
     @events = @subcategory.events
     @page_title = "Choose the Class"
+    cookies[:subcategory] = { :value => @subcategory.id, :expires => 7.days.from_now }
 
     respond_to do |format|
       format.html # show.html.erb

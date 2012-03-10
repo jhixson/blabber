@@ -6,7 +6,10 @@
   <div data-role="header">
     <div id="back" class="sign_up">
       <%= link_to image_tag('btn_signup.png'), '/users/sign_up' if current_user == nil %>
-      <%= link_to image_tag('btn_back.png'), '', :"data-rel" => "back" if controller_name == "events"  %>
+      <%= link_to image_tag('btn_back.png'), '', :"data-rel" => "back" if controller.action_name == "rate"  %>
+      <% if !cookies[:subcategory].blank? %>
+        <%= link_to image_tag('btn_back.png'), list_events_path(cookies[:subcategory]) if controller_name == "events" && controller.action_name != "rate"  %>
+      <% end %>
     </div>
     <div id="headertext"><h1><%= !@page_title.blank? ? @page_title : 'Login' %></h1></div>
     <div id="back"></div>
