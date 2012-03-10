@@ -8,6 +8,7 @@
     <th>Ends at</th>
     <th>Location</th>
     <th>Vote interval</th>
+    <th>Votes</th>
     <th></th>
     <th></th>
     <th></th>
@@ -21,6 +22,7 @@
     <td><%= event.ends_at %></td>
     <td><%= event.location %></td>
     <td><%= event.vote_interval %></td>
+    <td><%= event.votes %></td>
     <td><%= link_to 'Show', event %></td>
     <td><%= link_to 'Edit', edit_event_path(event) %></td>
     <td><%= link_to 'Destroy', event, confirm: 'Are you sure?', method: :delete %></td>

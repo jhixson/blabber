@@ -96,6 +96,12 @@ $('div[data-role="page"]').live('pageinit', function() {
    },{'scope':'publish_stream'});
   });
 
+  $('a.twitter_share').unbind('click');
+  $('a.twitter_share').click(function() {
+    $(this).toggleClass('active');
+  });
+
+
   $('a#submit_send').unbind('click');
   $('a#submit_send').click(function(e) {
     e.preventDefault();

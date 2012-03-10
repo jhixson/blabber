@@ -73,9 +73,9 @@
       }
    },
    tooltip: {
-      backgroundColor: 'rgba(0, 0, 0, 0.75)',
+      backgroundColor: 'rgba(255, 255, 255, 0.95)',
       style: {
-         color: '#F0F0F0'
+         color: '#333'
       }
    },
    toolbar: {
