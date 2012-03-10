@@ -1,22 +1,26 @@
   <div data-role="footer" data-id="myfooter" data-position="fixed" id="footer">
     <table align="center" border="0" cellpadding="0" cellspacing="0"><tr><td>
+    <% @active = controller.action_name == "subcategories" ? "active" : "" %>
     <% if !@category.blank? || !cookies[:category].blank? && !current_user.blank? %>
-        <div id="link"><%= link_to "find classes", list_subcategories_path(@category || cookies[:category]), :class => "find_classes active" %></div>
+        <div id="link"><%= link_to "find classes", list_subcategories_path(@category || cookies[:category]), :class => "find_classes #{@active}" %></div>
     <% else %>
         <div id="link"><%= link_to "find classes", '#', :class => "find_classes" %></div>
     <% end %>
+    <% @active = controller.action_name == "favorites" ? "active" : "" %>
     <% if !current_user.blank? %>
-        <div id="link"><%= link_to "my classes", favorite_events_path, :class => "my_classes active" %></div>
+        <div id="link"><%= link_to "my classes", favorite_events_path, :class => "my_classes #{@active}" %></div>
     <% else %>
         <div id="link"><%= link_to "my classes", '#', :class => "my_classes" %></div>
     <% end %>
+    <% @active = controller.action_name == "edit" ? "active" : "" %>
     <% if !current_user.blank? %>
-        <div id="link"><%= link_to "my info", '/users/edit', :class => "my_info active" %></div>
+        <div id="link"><%= link_to "my info", '/users/edit', :class => "my_info #{@active}" %></div>
     <% else %>
         <div id="link"><%= link_to "my info", '#', :class => "my_info" %></div>
     <% end %>
+    <% @active = controller.action_name == "rate" ? "active" : "" %>
     <% if !@event.blank? %>
-        <div id="link"><%= link_to "RATE IT", rate_event_path(@event), :class => "rate_it active" %></div>
+        <div id="link"><%= link_to "RATE IT", rate_event_path(@event), :class => "rate_it #{@active}" %></div>
     <% else %>
         <div id="link"><%= link_to "RATE IT", '#', :class => "rate_it" %></div>
     <% end %>

@@ -18,7 +18,10 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @comments = Comment.find_all_by_event_id(@event.id)
     @comment = Comment.new
-    @page_title = "Rate #{@event.name}"
+    max_length = 50
+    title = @event.name[0..max_length]
+    title << "..." if @event.name.length > max_length
+    @page_title = "Rate #{title}"
     @show_heart = true
     @faved = Favorite.where(:user_id => current_user.id, :event_id => @event.id)
     @heart_active = !@faved.blank? ? ' active' : ''
