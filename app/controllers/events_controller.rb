@@ -79,7 +79,7 @@ class EventsController < ApplicationController
   # GET /events/1/favorite
   def favorite
     @event = Event.find(params[:id])
-    @fav = Favorite.find_all_by_event_id(@event.id)
+    @fav = Favorite.find_all_by_event_id_and_user_id(@event.id, current_user.id)
     if @fav.count == 0
       @fav = Favorite.new
       @fav.user_id = current_user.id
