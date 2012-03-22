@@ -113,3 +113,11 @@ $('div[data-role="page"]').live('pageinit', function() {
   if (window.location.hash == "#_=_")
         window.location.hash = "";
 });
+
+if (!window.console) {
+  window.console = {
+    log: function() {},
+    error: function() {},
+    warn: function() {}
+  };
+}
